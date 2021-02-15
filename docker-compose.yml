@@ -6,6 +6,6 @@ services:
 
   # db is is db folder
   db:
-    build: C:\Users\mike_\IdeaProjects\seMethods\the_db\test_db.
+    build: the_db/.
     command: --default-authentication-plugin=mysql_native_password
     restart: always
