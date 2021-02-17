@@ -63,7 +63,7 @@ public class App {
     public void connect() {
         try {
             // Load Database driver
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
@@ -75,8 +75,10 @@ public class App {
             try {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
-                // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://the_db:3306/employees?useSSL=false", "root", "example");
+                // Connect to database from docker
+                 con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
+                // Connect to database locally
+//                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
