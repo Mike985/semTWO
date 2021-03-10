@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+
+actor HR as "HR Advisor"
+
+rectangle Database
+
+rectangle "HR System" {
+    usecase UC4 as "Get salaries
+    by role"
+    usecase UC1 as"Delete an employee's data"
+    usecase UCb as"Delete data"
+
+    usecase UCa as "Print salaries"
+
+    HR - UC4
+    UC1 ..>UCb
+    HR- UC1
+
+    UC1 - Database
+    UC4 ..> UCa : include
+    UC4 - Database
+}
+@enduml
