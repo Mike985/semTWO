@@ -61,7 +61,7 @@ public class App {
     /**
      * Connect to the MySQL database.
      */
-    public void connect() {
+    public void connect(String location) {
         try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -79,7 +79,7 @@ public class App {
                 // Connect to database from docker
                  con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
                  //Connect to database locally
-              // con = DriverManager.getConnection("jdbc:mysql://localhost:33060/employees?useSSL=true", "root", "example");
+              // con = DriverManager.getConnection("jdbc:mysql://" + location + "/employees?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             } catch (SQLException sqle) {
@@ -111,7 +111,7 @@ public class App {
         App a = new App();
 
         // Connect to database
-        a.connect();
+        a.connect("localhost:33060");
         // Get Employee
         // Extract employee salary information
         ArrayList<Employee> employees = a.getAllSalaries();
